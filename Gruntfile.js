@@ -3,7 +3,7 @@
 module.exports = function(grunt) {
 	var packageData = grunt.file.readJSON("package.json");
 	var changelogLine = grunt.file.read("changelog.txt").toString().split("\n")[0];
-	packageData.version = /^Version ([0-9xabrc.]+)/.exec(changelogLine)[1];
+	packageData.version = /^Version ([0-9xabrc.]+pvb)/.exec(changelogLine)[1];
 	packageData.date = /^Version [^\(]+\(([^\)]+)\)/.exec(changelogLine)[1];
 
 	grunt.initConfig({
@@ -615,22 +615,22 @@ module.exports = function(grunt) {
 		nugetpack: {
 			main: {
 				options: {
-					id: "TinyMCE",
+					id: "TinyMCE.ProVerbial",
 					version: packageData.version,
-					authors: "Ephox Corp",
-					owners: "Ephox Corp",
+					authors: "Ephox Corp, BuSoCo GmbH",
+					owners: "Ephox Corp, BuSoCo GmbH",
 					description: "The best WYSIWYG editor! TinyMCE is a platform independent web based Javascript HTML WYSIWYG editor " +
 						"control released as Open Source under LGPL by Ephox Corp. TinyMCE has the ability to convert HTML " +
 						"TEXTAREA fields or other HTML elements to editor instances. TinyMCE is very easy to integrate " +
 						"into other Content Management Systems.",
-					releaseNotes: "Release notes for my package.",
+					releaseNotes: "This version is created with modifications specifically for BuSoCo ProVerbial.",
 					summary: "TinyMCE is a platform independent web based Javascript HTML WYSIWYG editor " +
 						"control released as Open Source under LGPL by Ephox Corp.",
 					projectUrl: "http://www.tinymce.com/",
 					iconUrl: "http://www.tinymce.com/favicon.ico",
 					licenseUrl: "http://www.tinymce.com/license",
 					requireLicenseAcceptance: true,
-					tags: "Editor TinyMCE HTML HTMLEditor",
+					tags: "ProVerbial Editor",
 					excludes: [
 						"js/tinymce/skins/**/*.dev.svg",
 						"js/tinymce/skins/**/*.less",
@@ -653,22 +653,22 @@ module.exports = function(grunt) {
 
 			jquery: {
 				options: {
-					id: "TinyMCE.jQuery",
+					id: "TinyMCE.ProVerbial.jQuery",
 					version: packageData.version,
-					authors: "Ephox Corp",
-					owners: "Ephox Corp",
+					authors: "Ephox Corp, BuSoCo GmbH",
+					owners: "Ephox Corp, BuSoCo GmbH",
 					description: "The best WYSIWYG editor! TinyMCE is a platform independent web based Javascript HTML WYSIWYG editor " +
 						"control released as Open Source under LGPL by Ephox Corp. TinyMCE has the ability to convert HTML " +
 						"TEXTAREA fields or other HTML elements to editor instances. TinyMCE is very easy to integrate " +
 						"into other Content Management Systems.",
-					releaseNotes: "Release notes for my package.",
+					releaseNotes: "This version is created with modifications specifically for BuSoCo ProVerbial.",
 					summary: "TinyMCE is a platform independent web based Javascript HTML WYSIWYG editor " +
 						"control released as Open Source under LGPL by Ephox Corp.",
 					projectUrl: "http://www.tinymce.com/",
 					iconUrl: "http://www.tinymce.com/favicon.ico",
 					licenseUrl: "http://www.tinymce.com/license",
 					requireLicenseAcceptance: true,
-					tags: "Editor TinyMCE HTML HTMLEditor",
+					tags: "ProVerbial Editor",
 					excludes: [
 						"js/tinymce/skins/**/*.dev.svg",
 						"js/tinymce/skins/**/*.less",
@@ -800,5 +800,5 @@ module.exports = function(grunt) {
 	grunt.registerTask("minify", ["amdlc", "uglify", "skin", "less"]);
 	grunt.registerTask("test", ["qunit"]);
 	grunt.registerTask("sc-test", ["connect", "clean:saucelabs", "saucelabs-qunit"]);
-	grunt.registerTask("default", ["lint", "minify", "test", "clean:release", "moxiezip", "nugetpack"]);
+	grunt.registerTask("default", ["lint", "minify", "test", "clean:release", "moxiezip"]);
 };
