@@ -1,5 +1,6 @@
 Version 4.3.3.pvb (2016-01-xx)
 	Created a version specifically for ProVerbial, because it requires specific behaviour.
+	Fixed bug where empty elements were unnecessarily padded with BRs on IE
 Version 4.3.3 (2016-01-14)
 	Added new table_resize_bars configuration setting.  This setting allows you to disable the table resize bars.
 	Added new beforeInitialize event to tinymce.util.XHR lets you modify XHR properties before open. Patch contributed by Brent Clintel.
