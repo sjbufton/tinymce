@@ -33,4 +33,7 @@ mcmanager
 skin.less
 skin.ie7.less
 skin.ie7.dev.less
+**/bolt/bootstrap*.js
+**/dist
+**/scratch
 *.js.map
