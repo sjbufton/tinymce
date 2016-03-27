@@ -1,4 +1,5 @@
-Version 4.3.8.pvb (2016-03-xx)
+Version 4.3.8.pvb (2016-03-27)
+	Created the ProVerbial Base skin, based on the standard lightgray
 	Merged the official 4.3.8 release to the version specifically for ProVerbial
 Version 4.3.8 (2016-03-15)
 	Fixed bug where inserting HR at the end of a block element would produce an extra empty block.
