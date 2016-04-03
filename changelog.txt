@@ -1,3 +1,5 @@
+Version 4.3.8.1.pvb (2016-04-03)
+	Corrected the selection display when non-editable blocks containing fixed-width tables are selected.
 Version 4.3.8.pvb (2016-03-27)
 	Created the ProVerbial Base skin, based on the standard lightgray
 	Merged the official 4.3.8 release to the version specifically for ProVerbial
