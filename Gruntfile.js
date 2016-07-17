@@ -174,7 +174,8 @@ module.exports = function(grunt) {
 						"Animations.less",
 						"TinyMCE.less",
 						"CropRect.less",
-						"ImagePanel.less"
+						"ImagePanel.less",
+						"Arrows.less"
 					],
 					append: ["Icons.less"],
 					importFrom: "js/tinymce/tinymce.js",
@@ -193,7 +194,8 @@ module.exports = function(grunt) {
 						"Animations.less",
 						"TinyMCE.less",
 						"CropRect.less",
-						"ImagePanel.less"
+						"ImagePanel.less",
+						"Arrows.less"
 					],
 					append: ["Icons.Ie7.less"],
 					importFrom: "js/tinymce/tinymce.js",
@@ -267,7 +269,7 @@ module.exports = function(grunt) {
 				beautify: {
 					ascii_only: true
 				},
-				sourceMap: true
+				sourceMap: false
 			},
 
 			themes: {
@@ -528,6 +530,11 @@ module.exports = function(grunt) {
 							"tinymce.jquery.min.js",
 							"window.console && console.log('Use tinymce.min.js instead of tinymce.jquery.min.js.');\n" + src
 						);
+
+						zip.addFile(
+							"jquery.tinymce.js",
+							"js/tinymce/classes/jquery.tinymce.js"
+						);
 					},
 
 					to: "tmp/tinymce_<%= pkg.version %>_component.zip"
@@ -725,7 +732,7 @@ module.exports = function(grunt) {
 		watch: {
 			core: {
 				files: ["js/tinymce/classes/**/*.js"],
-				tasks: ["eslint:core", "amdlc:core", "amdlc:core-jquery", "skin"],
+				tasks: ["amdlc:core", "bolt-build", "skin"],
 				options: {
 					spawn: false
 				}

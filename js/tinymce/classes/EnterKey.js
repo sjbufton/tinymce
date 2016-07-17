@@ -232,7 +232,7 @@ define("tinymce/EnterKey", [
 								block.appendChild(clonedNode);
 							}
 						}
-					} while ((node = node.parentNode));
+					} while ((node = node.parentNode) && node != editableRoot);
 				}
 
 				emptyBlock(caretNode);
