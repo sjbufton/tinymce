@@ -1,3 +1,7 @@
+Version 4.3.10.pvb (2016-04-12)
+	Merged the official 4.3.10 release to the version specifically for ProVerbial
+Version 4.3.10 (2016-04-12)
+	Fixed bug where the key "y" on WebKit couldn't be entered due to conflict with keycode for F10 on keypress.
 Version 4.3.9.pvb (2016-04-12)
 	Merged the official 4.3.9 release to the version specifically for ProVerbial
 Version 4.3.9 (2016-04-12)
