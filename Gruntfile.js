@@ -777,4 +777,5 @@ module.exports = function(grunt) {
 	grunt.registerTask("test", ["qunit"]);
 	grunt.registerTask("sc-test", ["connect", "clean:saucelabs", "saucelabs-qunit"]);
 	grunt.registerTask("default", ["lint", "bolt-init", "minify", "test", "clean:release", "moxiezip"]);
+	grunt.registerTask("proverbial", ["clean:release", "clean:core", "clean:plugins", "clean:saucelabs", "lint", "bolt-init", "minify", "bundle"]);
 };
