@@ -1,3 +1,5 @@
+Version 4.4.3.1.pvb (2016-10-02)
+	Fixed bug with the offscreen selection showing onscreen on IE.
 Version 4.4.3.pvb (2016-09-27)
 	Merged the official 4.4.3 release to the version specifically for ProVerbial
 Version 4.4.3 (2016-09-01)
