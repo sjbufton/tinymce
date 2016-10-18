@@ -1,3 +1,5 @@
+Version 4.4.3.2.pvb (2016-10-18)
+	Fixed bug with drag/drop of cE=false elements (#3185)
 Version 4.4.3.1.pvb (2016-10-02)
 	Fixed bug with the offscreen selection showing onscreen on IE.
 Version 4.4.3.pvb (2016-09-27)
