@@ -644,12 +644,29 @@
 		DOM.setHTML('test', '<span data-mce-bogus="all">a</span>b');
 		ok(!DOM.isEmpty(DOM.get('test')), 'Contains a bogus all element but some text as well.');
 
+		DOM.setHTML('test', '<code> </code>');
+		ok(!DOM.isEmpty(DOM.get('test')), 'Contains a code element should be treated as content.');
+
+		DOM.setHTML('test', '<pre> </pre>');
+		ok(!DOM.isEmpty(DOM.get('test')), 'Contains a pre element should be treated as content.');
+
+		DOM.setHTML('test', '<code></code>');
+		ok(!DOM.isEmpty(DOM.get('test')), 'Contains a code element should be treated as content.');
+
+		DOM.setHTML('test', '<pre></pre>');
+		ok(!DOM.isEmpty(DOM.get('test')), 'Contains a pre element should be treated as content.');
+
 		DOM.remove('test');
 	});
 
 	test('isEmpty with list of elements considered non-empty', function() {
 		var elm = DOM.create('p', null, '<img>');
 		equal(false, DOM.isEmpty(elm, {img: true}));
+	});
+
+	test('isEmpty on pre', function() {
+		var elm = DOM.create('pre', null, '  ');
+		equal(false, DOM.isEmpty(elm));
 	});
 
 	test('isEmpty with list of elements considered non-empty without schema', function() {

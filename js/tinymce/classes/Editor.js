@@ -905,25 +905,17 @@ define("tinymce/Editor", [
 				}
 			});
 
-			if (!ie || ie >= 11) {
-				// Add BR elements to empty blocks to prevent them collapsing, except for IE < 11,
-				// which size the elements as expected WITHOUT the br. See also EnterKey.js/emptyBlock()
-				self.parser.addNodeFilter('p,h1,h2,h3,h4,h5,h6,div', function(nodes) {
-					var i = nodes.length, node, nonEmptyElements = self.schema.getNonEmptyElements();
+			self.parser.addNodeFilter('p,h1,h2,h3,h4,h5,h6,div', function(nodes) {
+				var i = nodes.length, node, nonEmptyElements = self.schema.getNonEmptyElements();
 
-					while (i--) {
-						node = nodes[i];
+				while (i--) {
+					node = nodes[i];
 
-						if (node.isEmpty(nonEmptyElements, {br: 1} /* Consider an existing br data-mce-bogus element as non-empty */)) {
-							var brNode = new Node('br', 1);
-							brNode.shortEnded = true;
-							brNode.attr('data-mce-bogus', '1');
-
-							node.append(brNode);
-						}
+					if (node.isEmpty(nonEmptyElements) && node.getAll('br').length === 0) {
+						node.append(new Node('br', 1)).shortEnded = true;
 					}
-				});
-			}
+				}
+			});
 
 			/**
 			 * DOM serializer for the editor. Will be used when contents is extracted from the editor.
@@ -1012,7 +1004,7 @@ define("tinymce/Editor", [
 			// Remove empty contents
 			if (settings.padd_empty_editor) {
 				self.on('PostProcess', function(e) {
-					e.content = e.content.replace(/^(<p[^>]*>(&nbsp;|&#160;|\s|\u00a0|)<\/p>[\r\n]*|<br \/>[\r\n]*)$/, '');
+					e.content = e.content.replace(/^(<p[^>]*>(&nbsp;|&#160;|\s|\u00a0|<br \/>|)<\/p>[\r\n]*|<br \/>[\r\n]*)$/, '');
 				});
 			}
 
@@ -1851,7 +1843,7 @@ define("tinymce/Editor", [
 
 			// Get raw contents or by default the cleaned contents
 			if (args.format == 'raw') {
-				content = self.serializer.getTrimmedContent();
+				content = Tools.trim(self.serializer.getTrimmedContent());
 			} else if (args.format == 'text') {
 				content = body.innerText || body.textContent;
 			} else {

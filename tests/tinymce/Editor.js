@@ -232,7 +232,7 @@ test('br in empty elements', function() {
 	
 	equal(editor.getContent({format: 'raw'}).toLowerCase(),
 			tinymce.isIE && tinymce.isIE < 11	? '<p>&nbsp;</p><h1>&nbsp;</h1><h2>&nbsp;</h2><h3>&nbsp;</h3><h4>&nbsp;</h4><h5>&nbsp;</h5><h6>&nbsp;</h6><div class="a"></div><div class="x"><div class="y"></div></div>'
-												: '<p>&nbsp;<br data-mce-bogus="1"></p><h1>&nbsp;<br data-mce-bogus="1"></h1><h2>&nbsp;<br data-mce-bogus="1"></h2><h3>&nbsp;<br data-mce-bogus="1"></h3><h4>&nbsp;<br data-mce-bogus="1"></h4><h5>&nbsp;<br data-mce-bogus="1"></h5><h6>&nbsp;<br data-mce-bogus="1"></h6><div class="a"><br data-mce-bogus="1"></div><div class="x"><div class="y"><br data-mce-bogus="1"></div></div>');
+												: '<p>&nbsp;<br></p><h1>&nbsp;<br></h1><h2>&nbsp;<br></h2><h3>&nbsp;<br></h3><h4>&nbsp;<br></h4><h5>&nbsp;<br></h5><h6>&nbsp;<br></h6><div class="a"><br></div><div class="x"><div class="y"><br></div></div>');
 	equal(editor.getContent(), '<p>\u00a0</p><h1>\u00a0</h1><h2>\u00a0</h2><h3>\u00a0</h3><h4>\u00a0</h4><h5>\u00a0</h5><h6>\u00a0</h6><div class="a"></div><div class="x"><div class="y"></div></div>');
 });
 
@@ -510,7 +510,36 @@ test('translate', function() {
 	equal(editor.translate('input i18n'), 'output i18n');
 });
 
+test('Treat some paragraphs as empty contents', function() {
+	editor.setContent('<p><br /></p>');
+	equal(editor.getContent(), '');
+
+	editor.setContent('<p>\u00a0</p>');
+	equal(editor.getContent(), '');
+});
+
 test('kamer word bounderies', function() {
 	editor.setContent('<p>!\u200b!\u200b!</p>');
 	equal(editor.getContent(), '<p>!\u200b!\u200b!</p>');
+});
+
+test('Padd empty elements with br', function() {
+	editor.settings.padd_empty_with_br = true;
+	editor.setContent('<p>a</p><p></p>');
+	equal(editor.getContent(), '<p>a</p><p><br /></p>');
+	delete editor.settings.padd_empty_with_br;
+});
+
+test('Padd empty elements with br on insert at caret', function() {
+	editor.settings.padd_empty_with_br = true;
+	editor.setContent('<p>a</p>');
+	Utils.setSelection('p', 1);
+	editor.insertContent('<p>b</p><p></p>');
+	equal(editor.getContent(), '<p>a</p><p>b</p><p><br /></p>');
+	delete editor.settings.padd_empty_with_br;
+});
+
+test('Preserve whitespace pre elements', function() {
+	editor.setContent('<pre> </pre>');
+	equal(editor.getContent(), '<pre> </pre>');
 });

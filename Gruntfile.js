@@ -28,6 +28,7 @@ module.exports = function(grunt) {
 				"!js/tinymce/plugins/spellchecker/plugin.js",
 				"!js/tinymce/plugins/imagetools/plugin.js",
 				"!js/tinymce/plugins/media/plugin.js",
+				"!js/tinymce/plugins/lists/plugin.js",
 				"!js/tinymce/plugins/wordcount/plugin.js",
 				"!js/tinymce/plugins/codesample/plugin.js",
 				"!js/tinymce/plugins/codesample/classes/Prism.js"
@@ -45,133 +46,6 @@ module.exports = function(grunt) {
 						"tests/index.html"
 					]
 				}
-			}
-		},
-
-		"bolt-init": {
-			"imagetools-plugin": {
-				config_dir: "js/tinymce/plugins/imagetools/config/bolt"
-			},
-
-			"media-plugin": {
-				config_dir: "js/tinymce/plugins/media/config/bolt"
-			},
-
-			"wordcount-plugin": {
-				config_dir: "js/tinymce/plugins/wordcount/config/bolt"
-			},
-
-			"inlite-theme": {
-				config_dir: "js/tinymce/themes/inlite/config/bolt"
-			},
-
-			"modern-theme": {
-				config_dir: "js/tinymce/themes/modern/config/bolt"
-			}
-		},
-
-		"bolt-build": {
-			"imagetools-plugin": {
-				config_js: "js/tinymce/plugins/imagetools/config/bolt/prod.js",
-				output_dir: "js/tinymce/plugins/imagetools/scratch",
-				main: "tinymce/imagetoolsplugin/Plugin",
-				filename: "plugin",
-
-				generate_inline: true,
-				minimise_module_names: true,
-
-				files: {
-					src: ['js/tinymce/plugins/imagetools/src/main/js/Plugin.js']
-				}
-			},
-
-			"media-plugin": {
-				config_js: "js/tinymce/plugins/media/config/bolt/prod.js",
-				output_dir: "js/tinymce/plugins/media/scratch",
-				main: "tinymce.media.Plugin",
-				filename: "plugin",
-
-				generate_inline: true,
-				minimise_module_names: true,
-
-				files: {
-					src: ["js/tinymce/plugins/media/src/main/js/tinymce/media/Plugin.js"]
-				}
-			},
-
-			"wordcount-plugin": {
-				config_js: "js/tinymce/plugins/wordcount/config/bolt/prod.js",
-				output_dir: "js/tinymce/plugins/wordcount/scratch",
-				main: "tinymce.wordcount.Plugin",
-				filename: "plugin",
-
-				generate_inline: true,
-				minimise_module_names: true,
-
-				files: {
-					src: ["js/tinymce/plugins/wordcount/src/main/js/tinymce/wordcount/Plugin.js"]
-				}
-			},
-
-			"inlite-theme": {
-				config_js: "js/tinymce/themes/inlite/config/bolt/prod.js",
-				output_dir: "js/tinymce/themes/inlite/scratch",
-				main: "tinymce/inlite/Theme",
-				filename: "theme",
-
-				generate_inline: true,
-				minimise_module_names: true,
-
-				files: {
-					src: ['js/tinymce/themes/inlite/src/main/js/tinymce/inlite/Theme.js']
-				}
-			},
-
-			"modern-theme": {
-				config_js: "js/tinymce/themes/modern/config/bolt/prod.js",
-				output_dir: "js/tinymce/themes/modern/scratch",
-				main: "tinymce.modern.Theme",
-				filename: "theme",
-
-				generate_inline: true,
-				minimise_module_names: true,
-
-				files: {
-					src: ['js/tinymce/themes/modern/src/main/js/tinymce/modern/Theme.js']
-				}
-			}
-		},
-
-		copy: {
-			"bolt-plugins": {
-				files: [
-					{
-						src: "js/tinymce/plugins/imagetools/scratch/inline/plugin.raw.js",
-						dest: "js/tinymce/plugins/imagetools/plugin.js"
-					},
-					{
-						src: "js/tinymce/plugins/media/scratch/inline/plugin.raw.js",
-						dest: "js/tinymce/plugins/media/plugin.js"
-					},
-					{
-						src: "js/tinymce/plugins/wordcount/scratch/inline/plugin.raw.js",
-						dest: "js/tinymce/plugins/wordcount/plugin.js"
-					}
-				]
-			},
-
-			"bolt-themes": {
-				files: [
-					{
-						src: "js/tinymce/themes/inlite/scratch/inline/theme.raw.js",
-						dest: "js/tinymce/themes/inlite/theme.js"
-					},
-
-					{
-						src: "js/tinymce/themes/modern/scratch/inline/theme.raw.js",
-						dest: "js/tinymce/themes/modern/theme.js"
-					}
-				]
 			}
 		},
 
@@ -392,39 +266,6 @@ module.exports = function(grunt) {
 				ext: ".min.js"
 			},
 
-			"bolt-plugins": {
-				files: [
-					{
-						src: "js/tinymce/plugins/imagetools/scratch/inline/plugin.js",
-						dest: "js/tinymce/plugins/imagetools/plugin.min.js"
-					},
-
-					{
-						src: "js/tinymce/plugins/wordcount/scratch/inline/plugin.js",
-						dest: "js/tinymce/plugins/wordcount/plugin.min.js"
-					},
-
-					{
-						src: "js/tinymce/plugins/media/scratch/inline/plugin.js",
-						dest: "js/tinymce/plugins/media/plugin.min.js"
-					}
-				]
-			},
-
-			"bolt-themes": {
-				files: [
-					{
-						src: "js/tinymce/themes/inlite/scratch/inline/theme.js",
-						dest: "js/tinymce/themes/inlite/theme.min.js"
-					},
-
-					{
-						src: "js/tinymce/themes/modern/scratch/inline/theme.js",
-						dest: "js/tinymce/themes/modern/theme.min.js"
-					}
-				]
-			},
-
 			"jquery-plugin": {
 				src: ["js/tinymce/classes/jquery.tinymce.js"],
 				dest: "js/tinymce/jquery.tinymce.min.js"
@@ -454,7 +295,8 @@ module.exports = function(grunt) {
 						"js/tinymce/plugins/visualblocks/img",
 						"js/tinymce/skins/*/fonts/*.json",
 						"js/tinymce/skins/*/fonts/readme.md",
-						"readme.md"
+						"readme.md",
+						"js/**/Gruntfile.js"
 					],
 
 					to: "tmp/tinymce_<%= pkg.version %>.zip"
@@ -545,7 +387,8 @@ module.exports = function(grunt) {
 						"js/tinymce/skins/*/fonts/*.dev.svg",
 						"js/tinymce/skins/*/fonts/readme.md",
 						"readme.md",
-						"js/tests/.jshintrc"
+						"js/tests/.jshintrc",
+						"js/**/Gruntfile.js"
 					],
 
 					concat: [
@@ -588,6 +431,7 @@ module.exports = function(grunt) {
 						"js/**/lib",
 						"js/**/dependency",
 						"js/**/src",
+						"js/**/Gruntfile.js",
 						"js/**/*.less",
 						"js/**/*.dev.svg",
 						"js/**/*.dev.js",
@@ -738,6 +582,7 @@ module.exports = function(grunt) {
 						"js/**/*.less",
 						"js/**/*.dev.svg",
 						"js/**/*.dev.js",
+						"js/**/Gruntfile.js",
 						"js/tinymce/tinymce.full.min.js"
 					],
 					outputDir: "tmp"
@@ -780,6 +625,7 @@ module.exports = function(grunt) {
 						"js/**/*.less",
 						"js/**/*.dev.svg",
 						"js/**/*.dev.js",
+						"js/**/Gruntfile.js",
 						"js/tinymce/tinymce.full.min.js"
 					],
 					outputDir: "tmp"
@@ -868,9 +714,15 @@ module.exports = function(grunt) {
 			plugins: {
 				files: ["js/tinymce/plugins/**/*.js"],
 				tasks: [
-					"amdlc:paste-plugin", "bolt-build:imagetools-plugin",
-					"bolt-build:media-plugin", "bolt-build:wordcount-plugin", "amdlc:codesample-plugin",
-					"amdlc:table-plugin", "amdlc:spellchecker-plugin", "uglify:plugins",
+					"amdlc:paste-plugin",
+					"bolt-build:imagetools-plugin",
+					"bolt-build:media-plugin",
+					"bolt-build:wordcount-plugin",
+					"bolt-build:lists-plugin",
+					"amdlc:codesample-plugin",
+					"amdlc:table-plugin",
+					"amdlc:spellchecker-plugin",
+					"uglify:plugins",
 					"eslint:plugins"
 				],
 				options: {
@@ -901,6 +753,7 @@ module.exports = function(grunt) {
 					config: 'tools/bolt/config/browser.js',
 					testdirs: [
 						'js/tinymce/plugins/media/src/test',
+						'js/tinymce/plugins/lists/src/test',
 						'js/tinymce/plugins/wordcount/src/test',
 						'js/tinymce/themes/inlite/src/test',
 						'js/tinymce/themes/modern/src/test'
@@ -909,17 +762,13 @@ module.exports = function(grunt) {
 			}
 		},
 
-		dent: {
-			all: {
-				options: {
-					dirs: [
-						'js/tinymce/plugins/media',
-						'js/tinymce/plugins/wordcount',
-						'js/tinymce/themes/inlite',
-						'js/tinymce/themes/modern'
-					]
-				}
-			}
+		subgrunt: {
+			'wordcount-plugin': {path: 'js/tinymce/plugins/wordcount'},
+			'imagetools-plugin': {path: 'js/tinymce/plugins/imagetools'},
+			'media-plugin': {path: 'js/tinymce/plugins/media'},
+			'lists-plugin': {path: 'js/tinymce/plugins/lists'},
+			'inlite-theme': {path: 'js/tinymce/themes/inlite'},
+			'modern-theme': {path: 'js/tinymce/themes/modern'}
 		}
 	});
 
@@ -932,8 +781,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('@ephox/bolt');
 
 	grunt.registerTask("lint", ["eslint"]);
-	grunt.registerTask("minify", ["amdlc", "bolt-build", "uglify", "copy", "skin", "less"]);
+	grunt.registerTask("minify", ["amdlc", "uglify", "skin", "less"]);
 	grunt.registerTask("test", ["qunit"]);
-	grunt.registerTask("default", ["lint", "bolt-init", "minify", "test", "clean:release", "moxiezip", "nugetpack", "version"]);
-	grunt.registerTask("proverbial", ["clean:release", "clean:core", "clean:plugins", "lint", "bolt-init", "minify", "test", "bundle"]);
+	grunt.registerTask("default", ["lint", "minify", "subgrunt", "test", "clean:release", "moxiezip", "nugetpack", "version"]);
+	grunt.registerTask("proverbial", ["clean:release", "clean:core", "clean:plugins", "lint", "minify", "subgrunt", "test", "bundle"]);
 };
