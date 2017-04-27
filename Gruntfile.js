@@ -370,7 +370,12 @@ module.exports = function(grunt) {
 		uglify: {
 			options: {
 				beautify: {
-					ascii_only: true
+					ascii_only: true,
+					screw_ie8: false
+				},
+
+				compress: {
+					screw_ie8: false
 				},
 				sourceMap: false
 			},
@@ -440,9 +445,9 @@ module.exports = function(grunt) {
 						"js/**/src",
 						"js/**/plugin.js",
 						"js/**/theme.js",
-						"js/*.less",
-						"js/*.dev.svg",
-						"js/*.dev.js",
+						"js/**/*.less",
+						"js/**/*.dev.svg",
+						"js/**/*.dev.js",
 						"js/tinymce/tinymce.full.min.js",
 						"js/tinymce/plugins/moxiemanager",
 						"js/tinymce/plugins/compat3x",
