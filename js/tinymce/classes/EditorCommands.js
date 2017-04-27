@@ -316,8 +316,8 @@ define("tinymce/EditorCommands", [
 			// Override unlink command
 			unlink: function() {
 				if (selection.isCollapsed()) {
-					var elm = selection.getNode();
-					if (elm.tagName == 'A') {
+					var elm = editor.dom.getParent(editor.selection.getStart(), 'a');
+					if (elm) {
 						editor.dom.remove(elm, true);
 					}
 
@@ -483,9 +483,9 @@ define("tinymce/EditorCommands", [
 							return;
 						}
 
-						if (element.nodeName != "LI") {
+						if (element.nodeName !== "LI") {
 							var indentStyleName = editor.getParam('indent_use_margin', false) ? 'margin' : 'padding';
-
+							indentStyleName = element.nodeName === 'TABLE' ? 'margin' : indentStyleName;
 							indentStyleName += dom.getStyle(element, 'direction', true) == 'rtl' ? 'Right' : 'Left';
 
 							if (command == 'outdent') {

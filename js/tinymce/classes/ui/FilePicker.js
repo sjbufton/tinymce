@@ -123,11 +123,11 @@ define("tinymce/ui/FilePicker", [
 			return [];
 		}
 
-		return join([
+		return fileType === 'file' ? join([
 			filterByQuery(term, fromHistoryMenuItems(history)),
 			filterByQuery(term, fromMenuItems('header')),
 			filterByQuery(term, anchorMenuItems())
-		]);
+		]) : filterByQuery(term, fromHistoryMenuItems(history));
 	};
 
 	var addToHistory = function (url, fileType) {
@@ -186,8 +186,8 @@ define("tinymce/ui/FilePicker", [
 			ctrl.focus();
 		});
 
-		ctrl.on('click', function () {
-			if (ctrl.value().length === 0) {
+		ctrl.on('click', function (e) {
+			if (ctrl.value().length === 0 && e.target.nodeName === 'INPUT') {
 				autocomplete('');
 			}
 		});

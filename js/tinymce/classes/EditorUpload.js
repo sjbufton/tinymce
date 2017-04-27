@@ -35,6 +35,10 @@ define("tinymce/EditorUpload", [
 			};
 		}
 
+		function cacheInvalidator() {
+			return '?' + (new Date()).getTime();
+		}
+
 		// Replaces strings without regexps to avoid FF regexp to big issue
 		function replaceString(content, search, replace) {
 			var index = 0;
@@ -60,7 +64,13 @@ define("tinymce/EditorUpload", [
 
 		function replaceUrlInUndoStack(targetUrl, replacementUrl) {
 			Arr.each(editor.undoManager.data, function(level) {
-				level.content = replaceImageUrl(level.content, targetUrl, replacementUrl);
+				if (level.type === 'fragmented') {
+					level.fragments = Arr.map(level.fragments, function (fragment) {
+						return replaceImageUrl(fragment, targetUrl, replacementUrl);
+					});
+				} else {
+					level.content = replaceImageUrl(level.content, targetUrl, replacementUrl);
+				}
 			});
 		}
 
@@ -78,7 +88,7 @@ define("tinymce/EditorUpload", [
 			replaceUrlInUndoStack(image.src, resultUri);
 
 			editor.$(image).attr({
-				src: resultUri,
+				src: settings.images_reuse_filename ? resultUri + cacheInvalidator() : resultUri,
 				'data-mce-src': editor.convertURL(resultUri, 'src')
 			});
 		}

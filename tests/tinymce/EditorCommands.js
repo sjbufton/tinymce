@@ -750,6 +750,13 @@ test('unlink', function() {
 	equal(editor.getContent(), '<p>test 123</p>');
 });
 
+test('unlink - unselected a[href] with childNodes', function() {
+	editor.setContent('<p><a href="test"><strong><em>test</em></strong></a></p>');
+	Utils.setSelection('em', 0);
+	editor.execCommand('unlink');
+	equal(editor.getContent(), '<p><strong><em>test</em></strong></p>');
+});
+
 test('subscript/superscript', function() {
 	expect(4);
 
@@ -801,6 +808,33 @@ test('indent/outdent', function() {
 	editor.execCommand('SelectAll');
 	editor.execCommand('Outdent');
 	equal(editor.getContent(), '<p>test 123</p>');
+});
+
+test('indent/outdent table always uses margin', function () {
+	expect(4);
+
+	editor.setContent('<table><tbody><tr><td>test</td></tr></tbody></table>');
+	editor.execCommand('SelectAll');
+	editor.execCommand('Indent');
+	equal(editor.getContent(), '<table style="margin-left: 30px;"><tbody><tr><td>test</td></tr></tbody></table>');
+
+	editor.setContent('<table><tbody><tr><td>test</td></tr></tbody></table>');
+	editor.execCommand('SelectAll');
+	editor.execCommand('Indent');
+	editor.execCommand('Indent');
+	equal(editor.getContent(), '<table style="margin-left: 60px;"><tbody><tr><td>test</td></tr></tbody></table>');
+
+	editor.setContent('<table><tbody><tr><td>test</td></tr></tbody></table>');
+	editor.execCommand('SelectAll');
+	editor.execCommand('Indent');
+	editor.execCommand('Indent');
+	editor.execCommand('Outdent');
+	equal(editor.getContent(), '<table style="margin-left: 30px;"><tbody><tr><td>test</td></tr></tbody></table>');
+
+	editor.setContent('<table><tbody><tr><td>test</td></tr></tbody></table>');
+	editor.execCommand('SelectAll');
+	editor.execCommand('Outdent');
+	equal(editor.getContent(), '<table><tbody><tr><td>test</td></tr></tbody></table>');
 });
 
 test('RemoveFormat', function() {

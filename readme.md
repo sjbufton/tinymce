@@ -39,9 +39,6 @@ Runs all qunit tests on PhantomJS.
 `grunt lint`
 Runs all source files through various JS linters.
 
-`grunt sc-test`
-Runs all qunit tests on Saucelabs.
-
 `grunt watch`
 Watches for source code changes and triggers rebuilds and linting.
 
@@ -50,7 +47,7 @@ Displays the various build tasks.
 
 Bundle themes and plugins into a single file
 ---------------------------------------------
-`grunt bundle --themes modern --plugins table,paste`
+`grunt bundle --themes=modern --plugins=table,paste`
 Minifies the core, adds the modern theme and adds the table and paste plugin into tinymce.min.js.
 
 Contributing to the TinyMCE project
