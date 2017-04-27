@@ -1,3 +1,6 @@
+Version 4.5.2.pvb (2017-04-27)
+	Merged the official 4.5.2 release to the version specifically for ProVerbial
+	Retained the ProVerbial modifications to DragDropOverrides, because the official version is still buggy on Internet Explorer 11.
 Version 4.5.2 (2017-01-04)
 	Added missing keyboard shortcut description for the underline menu item in the format menu.
 	Fixed bug where external blob urls wasn't properly handled by editor upload logic. Patch contributed by David Oviedo.
