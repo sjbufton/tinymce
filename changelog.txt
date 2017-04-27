@@ -1,3 +1,6 @@
+Version 4.4.3.3.pvb (2017-04-27)
+  Merged updated i18n handling (#3029, #3192)
+  Improved XSS protection (036c7c3 and 0d0a749)
 Version 4.4.3.2.pvb (2016-10-18)
 	Fixed bug with drag/drop of cE=false elements (#3185)
 Version 4.4.3.1.pvb (2016-10-02)
