@@ -1,3 +1,5 @@
+Version 4.5.0.pvb (2017-04-27)
+  Merged TinyMCE version 4.5.0, changelog not updated there
 Version 4.4.3.3.pvb (2017-04-27)
   Merged updated i18n handling (#3029, #3192)
   Improved XSS protection (036c7c3 and 0d0a749)
