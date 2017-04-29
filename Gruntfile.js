@@ -783,6 +783,6 @@ module.exports = function(grunt) {
 	grunt.registerTask("lint", ["eslint"]);
 	grunt.registerTask("minify", ["amdlc", "uglify", "skin", "less"]);
 	grunt.registerTask("test", ["qunit"]);
-	grunt.registerTask("default", ["lint", "minify", "subgrunt", "test", "clean:release", "moxiezip", "nugetpack", "version"]);
-	grunt.registerTask("proverbial", ["clean:release", "clean:core", "clean:plugins", "lint", "minify", "subgrunt", "test", "bundle"]);
+	grunt.registerTask("default", ["lint", "minify", "subgrunt", "test", "validateVersion", "clean:release", "moxiezip", "nugetpack", "version"]);
+	grunt.registerTask("proverbial", ["validateVersion", "clean:release", "clean:core", "clean:plugins", "lint", "minify", "subgrunt", "test", "bundle"]);
 };

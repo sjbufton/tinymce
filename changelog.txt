@@ -1,3 +1,8 @@
+Version 4.5.5.pvb (2017-04-29)
+	Merged the official 4.5.4 release to the version specifically for ProVerbial
+	Retained the ProVerbial modifications to DragDropOverrides, because the official version is still buggy on Internet Explorer 11.
+Version 4.5.5 (2017-03-07)
+  Fixed text formatting bug with fontsize could not be changed after changing the text color.
 Version 4.5.4.pvb (2017-04-28)
 	Merged the official 4.5.4 release to the version specifically for ProVerbial
 	Retained the ProVerbial modifications to DragDropOverrides, because the official version is still buggy on Internet Explorer 11.
@@ -120,7 +125,7 @@ Version 4.5.0 (2016-11-23)
 	Fixed various api documentation issues and typos.
 	Removed layer plugin since it wasn't really ported from 3.x and there doesn't seem to be much use for it.
 	Removed moxieplayer.swf from the media plugin since it wasn't used by the media plugin.
-	Removed format state from the advlist plugin to be more consistent with common word processors.  
+	Removed format state from the advlist plugin to be more consistent with common word processors.
 Version 4.5.0.pvb (2017-04-27)
   Merged TinyMCE version 4.5.0, changelog not updated there
 Version 4.4.3.3.pvb (2017-04-27)
