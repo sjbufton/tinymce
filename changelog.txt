@@ -1,8 +1,13 @@
+Version 4.5.6.pvb (2017-04-29)
+	Merged the official 4.5.5 release to the version specifically for ProVerbial
+	Retained the ProVerbial modifications to DragDropOverrides, because the official version is still buggy on Internet Explorer 11.
+Version 4.5.6 (2017-03-30)
+	Fixed bug where it wasn't possible to select floated images in some cases.
 Version 4.5.5.pvb (2017-04-29)
-	Merged the official 4.5.4 release to the version specifically for ProVerbial
+	Merged the official 4.5.5 release to the version specifically for ProVerbial
 	Retained the ProVerbial modifications to DragDropOverrides, because the official version is still buggy on Internet Explorer 11.
 Version 4.5.5 (2017-03-07)
-  Fixed text formatting bug with fontsize could not be changed after changing the text color.
+	Fixed text formatting bug with fontsize could not be changed after changing the text color.
 Version 4.5.4.pvb (2017-04-28)
 	Merged the official 4.5.4 release to the version specifically for ProVerbial
 	Retained the ProVerbial modifications to DragDropOverrides, because the official version is still buggy on Internet Explorer 11.
