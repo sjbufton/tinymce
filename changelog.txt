@@ -1,3 +1,7 @@
+Version 4.5.7.1.pvb (2019-02-25)
+  Do not treat DocumentFragments specially on IE/Edge when serialising the DOM (part of ProVerbial issue #260)
+  Renamed the ProVerbial base skin path to enable the build to complete repeatably on Linux.
+  Retained the ProVerbial modifications to DragDropOverrides, because the official version is still buggy on Internet Explorer 11.
 Version 4.5.7.pvb (2017-05-01)
 	Merged the official 4.5.7 release to the version specifically for ProVerbial
 	Retained the ProVerbial modifications to DragDropOverrides, because the official version is still buggy on Internet Explorer 11.
