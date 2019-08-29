@@ -1,3 +1,5 @@
+Version 4.5.9.pvb-3 (2019-08-29)
+  Match the ProVerbial base skin primary colour to the new ProVerbial application skin.
 Version 4.5.9.pvb-2 (2019-03-11)
   Reset the version to 3 digits, so that NPM doesn't make a big mess of the node_modules directory
 Version 4.5.9.pvb (4.5.9.1, 2019-02-25)
